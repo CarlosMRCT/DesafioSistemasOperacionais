@@ -4,20 +4,32 @@ import java.util.LinkedList;
 
 public class Produce {
 
+	private Monitor monitor;
+
 	public Produce() {
 
 	}
 
+	public Produce(Monitor monitor) {
+		this.monitor = monitor;
+	}
+
 	public void produce(LinkedList<Integer> list, int capacity) throws InterruptedException {
+		int value = 0;
 		while (true) {
-			int value = 0;
+			synchronized (this) {
+				while (list.size() == capacity)
+					wait();
 
-			System.out.println("Producer produced-" + value);
+				System.out.println("Producer produced-" + value);
 
-			list.add(value++);
+				list.add(value++);
 
-			Thread.sleep(1000);
+				notify();
+
+				Thread.sleep(1500);
+
+			}
 		}
-
 	}
 }

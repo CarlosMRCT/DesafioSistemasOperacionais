@@ -14,16 +14,13 @@ public class Main {
 
 		Produce pc = new Produce();
 		Consume cm = new Consume();
-		Monitor monitor = new Monitor();
 		
 		Thread t1 = new Thread(new Runnable() {
 			@Override
 			public void run() {
 
 				try {
-					monitor.WaitProducer(list, capacity);
 					pc.produce(list, capacity);
-					notify();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -35,9 +32,7 @@ public class Main {
 			@Override
 			public void run() {
 				try {
-					monitor.WaitConsumer(list);
 					cm.consume(list);
-					notify();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
