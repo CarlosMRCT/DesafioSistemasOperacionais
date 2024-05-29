@@ -13,14 +13,12 @@ public class Main {
         producerThread.start();
         consumerThread.start();
 
-        // Here, we don't need to join the threads as we want them to run indefinitely
-        // However, we can still join to ensure a clean shutdown if needed
         try {
             producerThread.join();
             consumerThread.join();
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            System.out.println("Main thread interrupted");
+            System.out.println("Main thread interrompida");
         }
     }
 }

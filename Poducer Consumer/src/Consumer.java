@@ -9,12 +9,13 @@ public class Consumer implements Runnable {
     public void run() {
         while (true) {
             try {
-                System.out.println("Consumer started consuming.");
+                Thread.sleep(1100);
+                System.out.println("Consumidor começou a consumir.");
                 monitor.consume();
-                Thread.sleep(1500); // Simulating consumption time
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                System.out.println("Consumer interrupted");
+                System.out.println("Consumidor interrompido.");
                 break;
             }
         }

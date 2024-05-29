@@ -10,13 +10,14 @@ public class Producer implements Runnable {
         int item = 0;
         while (true) {
             try {
-                System.out.println("Producer started producing.");
+                Thread.sleep(1000);
+                System.out.println("Produtor começou a produzir.");
                 monitor.produce(item);
                 item++;
-                Thread.sleep(1500); // Simulating production time
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                System.out.println("Producer interrupted");
+                System.out.println("Produtor interrompido.");
                 break;
             }
         }

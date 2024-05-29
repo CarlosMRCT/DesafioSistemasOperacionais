@@ -14,7 +14,7 @@ public class Monitor {
             wait();
         }
         queue.add(item);
-        System.out.println("Producer Produced: " + (item + 1));
+        System.out.println("Produtor produziu: " + (item + 1));
         notifyAll();
     }
 
@@ -23,7 +23,7 @@ public class Monitor {
             wait();
         }
         int item = queue.poll();
-        System.out.println("Consumer Consumed: " + (item + 1));
+        System.out.println("Consumidor consumiu: " + (item + 1));
         notifyAll();
         return item;
     }
